@@ -17,3 +17,4 @@ jobs:
         with:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           public: "true"
+          changelog: "false"
