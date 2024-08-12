@@ -12,19 +12,15 @@ jobs:
           - runner: buildjet-4vcpu-ubuntu-2204
             arch: amd64
             ros_distro: iron
-            github_release: true
           - runner: buildjet-4vcpu-ubuntu-2204-arm
             arch: arm64
             ros_distro: iron
-            github_release: false
           - runner: buildjet-4vcpu-ubuntu-2204
             arch: amd64
             ros_distro: jazzy
-            github_release: false
           - runner: buildjet-4vcpu-ubuntu-2204-arm
             arch: arm64
             ros_distro: jazzy
-            github_release: false
 
     name: Release - ${{ matrix.job.arch }}
     runs-on: ${{matrix.job.runner}}}
@@ -39,6 +35,6 @@ jobs:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           arch: ${{ matrix.job.arch }}
           ros_distro: ${{ matrix.job.ros_distro }}
-          github_release: ${{ matrix.job.github_release }}
+          github_release: false
           public: true
           changelog: false
