@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ros_distro: ${{ steps.set-distros.outputs.distros }}
+        ros_distro: ${{ fromJSON(needs.setup.outputs.distros) }}
         job:
           - runner: 4vcpu-ubuntu-2404
             arch: amd64
@@ -65,7 +65,7 @@ jobs:
 
   release:
     name: Create Release
-    runs-on: ubuntu-2404
+    runs-on: ubuntu-latest
     needs:
       - build
 
